@@ -1,6 +1,6 @@
 import pandas as pd
 
-def parser(excel_file, tab_name):
+def parse(excel_file, tab_name):
   df = excel_file.parse(tab_name) 
 
   new_header = df.iloc[1] #grab the first row for the header
