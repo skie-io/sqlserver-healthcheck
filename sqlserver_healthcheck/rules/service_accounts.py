@@ -13,10 +13,7 @@ class ServiceAccountsRule(BaseRule):
     True
 
   def attributes(self):
-    return {
-      "server_version": self.sql_server_version,
-      "product_update_level": self.product_update_level
-    }
+    return {}
   
   def recommendations(self):
     return ""
