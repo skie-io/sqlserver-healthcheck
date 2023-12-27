@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.11"
 pandas = "^2.1.4"
 openpyxl = "^3.1.2"
+docx = "^0.2.4"
+docxtpl = "^0.16.7"
 
 
 [build-system]
