@@ -2,21 +2,21 @@ import pandas as pd
 from docxtpl import DocxTemplate
 from rules.database_version import DatabaseVersionRule
 from rules.instant_file import InstantFileRule
+from rules.global_trace_flags import GlobalTraceFlags
 from server_name import ServerName
 import rules
 import datetime
 
-xl = pd.ExcelFile('test_files/Navisite_SQL_Assesment__FULL_AGDATA-SQL_09_12_2021.xlsx')
-
-db_version = DatabaseVersionRule(xl)
-db_version.run()
-
-rule2 = InstantFileRule(xl)
-rule2.run()
+xl = pd.ExcelFile('test_files/Navisite_SQL_Assesment__FULL_24-MWP-DBS1_01_28_2023.xlsx')
 
 topics = []
-topics.append(db_version.result())
-topics.append(rule2.result())
+rule_classes = [DatabaseVersionRule, InstantFileRule, GlobalTraceFlags]
+
+for rule_class in rule_classes:
+  rule = rule_class(xl)
+  rule.run()
+  if rule.generate_message():
+    topics.append(rule.result())
 
 template = DocxTemplate('template.docx')
 

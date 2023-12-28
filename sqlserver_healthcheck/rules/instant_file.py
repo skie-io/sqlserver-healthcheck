@@ -8,7 +8,7 @@ class InstantFileRule(BaseRule):
     self._get_message()
     
   def generate_message(self):
-    True
+    return True
 
   def topic_name(self):
     return "Instant File Initialization"

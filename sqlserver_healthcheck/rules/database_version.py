@@ -10,7 +10,7 @@ class DatabaseVersionRule(BaseRule):
     self._get_product_update_level()
 
   def generate_message(self):
-    True
+    return True
 
   def topic_name(self):
     return "Version and Edition"
