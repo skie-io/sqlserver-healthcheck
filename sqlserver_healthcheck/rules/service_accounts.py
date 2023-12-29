@@ -7,9 +7,6 @@ class ServiceAccountsRule(BaseRule):
   def run(self):
     self.df = parse(self.excel, "Sysadmin Server Role Members")
     self._get_message()
-    
-  def generate_message(self):
-    return True
 
   def topic_name(self):
     return "SQL Server Service Account"

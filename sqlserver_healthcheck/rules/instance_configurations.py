@@ -10,9 +10,6 @@ class InstanceConfiguration(BaseRule):
     self._optimize_for_adhoc_workloads()
     self._remote_admin_connections()
     self._max_server_memory()
-    
-  def generate_message(self):
-    return True
 
   def topic_name(self):
     return "Instance Configuration"
@@ -51,14 +48,14 @@ class InstanceConfiguration(BaseRule):
       self.add_subtopic("Remote admin connections", "Disabled", "Recommend to enable")
 
   def _max_server_memory(self):
-    server_memory = 10000000 # Magic number, I don't know what is the best value
+    server_memory = 10000 # Magic number, I don't know what is the best value
     threshold = int(0.8 * server_memory) # Magic number, I don't know what is the best value
     item = self.df[self.df['Name'] == "max server memory (MB)"]
     value = item["Value"].item()
     if item["Value"].item() >= threshold: 
-      self.add_subtopic("Max server memory", f"I set to {value} out of {threshold} server memory")
+      self.add_subtopic("Max server memory", f"Set to {value} out of {threshold} server memory")
     else:
-      self.add_subtopic("Max server memory", f"I set to {value} out of {threshold} server memory", "Recommend to set to XXXX")
+      self.add_subtopic("Max server memory", f"Set to {value} out of {threshold} server memory", "Recommend to set to XXXX")
 
   def _priority_boost(self):
     item = self.df[self.df['Name'] == "priority boost"]

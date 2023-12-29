@@ -6,9 +6,6 @@ class InstantFileRule(BaseRule):
   def run(self):
     self.df = parse(self.excel, "Instant File Initialization")
     self._get_message()
-    
-  def generate_message(self):
-    return True
 
   def topic_name(self):
     return "Instant File Initialization"
