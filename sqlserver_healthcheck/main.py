@@ -3,14 +3,15 @@ from docxtpl import DocxTemplate
 from rules.database_version import DatabaseVersionRule
 from rules.instant_file import InstantFileRule
 from rules.global_trace_flags import GlobalTraceFlags
+#from rules.service_accounts import ServiceAccounts
+from rules.instance_configurations import InstanceConfiguration
 from server_name import ServerName
-import rules
 import datetime
 
 xl = pd.ExcelFile('test_files/Navisite_SQL_Assesment__FULL_24-MWP-DBS1_01_28_2023.xlsx')
 
 topics = []
-rule_classes = [DatabaseVersionRule, InstantFileRule, GlobalTraceFlags]
+rule_classes = [DatabaseVersionRule, InstantFileRule, GlobalTraceFlags, InstanceConfiguration]
 
 for rule_class in rule_classes:
   rule = rule_class(xl)
@@ -32,6 +33,3 @@ context = {
 template.render(context)
 
 template.save('/Users/crivelaro/Downloads/generated_report.docx')
-
-# for i in dir(rules):
-#    print (i,"  ",type(getattr(rules,i)))

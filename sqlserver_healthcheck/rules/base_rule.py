@@ -6,7 +6,7 @@ class BaseRule():
     self.recommendation = ""
     self.show_description = False
 
-  def add_subtopic(self, name, description, recommendation = None):
+  def add_subtopic(self, name, description, recommendation = ""):
     self.subtopics.append({ "name": name, "description": description, "recommendation": recommendation})
 
   def topic_name(self):

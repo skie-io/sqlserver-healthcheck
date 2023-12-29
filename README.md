@@ -6,4 +6,4 @@ $ poetry install
 
 ## Usage
 
-$ poetry run python main.py
+$ poetry run python sqlserver_healthcheck/main.py
